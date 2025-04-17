@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bahçeevim Sakarya - Profesyonel Bahçıvanlık ve Peyzaj</title>
+    <meta name="description" content="Sakarya'da Ziraat Mühendisliği eşliğinde profesyonel bahçıvanlık hizmetleri. Peyzaj düzenleme, çim biçme, budama, ilaçlama ve bakım.">
+    <meta name="keywords" content="bahçıvan, Sakarya bahçıvan, peyzaj, çim biçme, budama, bahçe düzenleme, ilaçlama">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Bahçeevim Sakarya - Profesyonel Bahçıvanlık ve Peyzaj">
+    <meta property="og:description" content="Sakarya'da Ziraat Mühendisliği eşliğinde bahçenizi güzelleştirecek çözümler.">
+    <meta property="og:image" content="https://via.placeholder.com/600x400.png?text=Bahceevim">
+    <meta property="og:url" content="https://bahceevim.com">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Geri kalan linkler (CSS, font vs.) -->
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            background-image: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333;
+            opacity: 0;
+            transition: opacity 1.5s ease-in;
+        }
+        body.loaded {
+            opacity: 1;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        ul li {
+            padding: 10px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+        ul li::before {
+            content: "\2714";
+            color: green;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        .gallery img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        header, footer {
+            text-align: center;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.9);
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        nav {
+            background-color: rgba(76, 175, 80, 0.9);
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        section {
+            margin: 20px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #hakkimizda {
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 30px auto;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        #hakkimizda h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #2e7d32;
+        }
+        #hakkimizda blockquote {
+            font-style: italic;
+            color: #4CAF50;
+            border-left: 4px solid #C8E6C9;
+            padding-left: 15px;
+            margin: 0 0 20px 0;
+        }
+        .social-icons {
+            margin-top: 10px;
+        }
+        .social-icons a {
+            margin: 0 10px;
+            font-size: 24px;
+            color: #4CAF50;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: #2e7d32;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #2e7d32;
+            transform: translateY(-2px);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="modal" id="imageModal">
+        <img id="modalImg" src="" alt="Büyütülmüş Görsel">
+    </div>
+    <header>
+        <h1>Bahçıvan Hizmetleri</h1>
+    </header>
+    <nav>
+        <a href="#hakkimizda">Hakkımızda</a>
+        <a href="#hizmetler">Hizmetler</a>
+        <a href="#galeri">Galeri</a>
+        <a href="#iletisim">İletişim</a>
+    </nav>
+    <section id="hakkimizda">
+        <h2>Hakkımızda</h2>
+        <blockquote>Ziraat Mühendisliği eşliğinde sahada yılların tecrübesi.</blockquote>
+        <p>Peyzaj düzenlemeleri, çim biçme, budama, ilaçlama ve periyodik bakım çalışmalarımızla, yaşam alanlarınıza doğallık ve estetik katıyoruz.</p>
+        <p>Müşteri memnuniyetini temel alan yaklaşımımızla, bahçenizi sizin kadar sahipleniyoruz.</p>
+    </section>
+       
+    <section id="hizmetler">
+        <h2>Hizmetlerimiz</h2>
+        <ul>
+            <li>Çim Biçme</li>
+            <li>Ağaç Budama</li>
+            <li>Bahçe Düzenleme</li>
+        </ul>
+    </section>
+    <section id="galeri">
+        <h2>Galeri</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x300?text=Çim+Biçme" alt="Çim Biçme">
+                <p>Mayıs 2024 - Bahçe çimi biçme ve kenar temizliği</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x300?text=Ağaç+Budama" alt="Ağaç Budama">
+                <p>Haziran 2024 - Yaşlı meyve ağaçlarının profesyonel budanması</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x300?text=Bahçe+Düzenleme" alt="Bahçe Düzenleme">
+                <p>Temmuz 2024 - Taş döşeme, çiçeklik yerleşimi ve dekoratif düzenleme</p>
+            </div>
+        </div>
+    </section>    
+    <section id="iletisim">
+        <h2>İletişim</h2>
+        <p>Telefon: +90 533 167 16 35</p>
+        <a href="tel:+905331671635" class="btn">Hemen Ara</a>
+        
+        <p>Bizi takip edin:</p>
+        <div class="social-icons">
+            <a href="INSTAGRAM_LINKIN" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="FACEBOOK_LINKIN" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="WHATSAPP_LINKIN" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>                       
+    </section>    
+    <footer>
+        &copy; 2025 Bahçıvan Hizmetleri - Tüm Hakları Saklıdır.
+    </footer>
+
+    <script>
+        // Sayfa yüklendiğinde fade-in efekti
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
+
+        // Galeri görsellerine tıklanınca modal aç
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImg');
+        const galleryImages = document.querySelectorAll('.gallery img');
+
+        galleryImages.forEach(img => {
+            img.addEventListener('click', () => {
+                modal.style.display = 'flex';
+                modalImg.src = img.src;
+            });
+        });
+
+        // Modal kapatma
+        modal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

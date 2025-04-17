@@ -1,0 +1,70 @@
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+ul li {
+    padding: 10px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+ul li::before {
+    content: "✔";
+    color: green;
+    font-weight: bold;
+    margin-right: 10px;
+}
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+.gallery img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+}
+.gallery-item {
+    max-width: 400px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    padding: 10px;
+}
+.gallery-item p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #444;
+}
+header, footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #f4f4f4;
+}
+section {
+    margin: 20px;
+    text-align: center;
+}
+.social-icons {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.social-icons img {
+    width: 28px;           /* Sabit boyut */
+    height: 28px;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+}
+
+.social-icons a:hover img {
+    transform: scale(1.2);
+}
