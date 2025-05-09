@@ -59,21 +59,30 @@
             margin-right: 10px;
         }
         .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: 1fr;
             gap: 10px;
+            justify-content: center;
+            max-width: 800px;
+            margin: 0 auto;
         }
+
+        @media (min-width: 600px) {
+            .gallery {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
         .gallery img {
             width: 100%;
-            max-width: 400px;
             height: auto;
             border-radius: 10px;
             cursor: pointer;
             transition: transform 0.3s;
         }
+
         .gallery img:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
         .modal {
             display: none;
